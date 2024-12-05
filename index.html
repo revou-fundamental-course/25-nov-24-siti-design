@@ -1,26 +1,262 @@
 <!DOCTYPE html>
-<html lang="en">
-
+<html lang="id">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
-    <link rel="stylesheet" href="CSS\styles.css">
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Kalkulator BMI</title>
+  <link rel="stylesheet" href="css/style.css">
+  <style>
+    /* Reset CSS */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  font-family: Arial, sans-serif;
+  line-height: 1.6;
+  background-color: #f9f9f9;
+  color: #333;
+  margin: 0;
+  padding: 0;
+}
+
+header {
+  text-align: center;
+  padding: 20px;
+  background-color: #4caf50;
+  color: white;
+}
+
+header h1 {
+  font-size: 2rem;
+  margin-bottom: 10px;
+}
+
+header p {
+  font-size: 1rem;
+}
+
+main {
+  max-width: 800px;
+  margin: 20px auto;
+  padding: 20px;
+}
+
+.frame {
+  background-color: #fff;
+  padding: 20px;
+  border-radius: 8px;
+  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+}
+
+form {
+  margin-bottom: 20px;
+}
+
+form fieldset {
+  border: none;
+  margin-bottom: 10px;
+}
+
+form legend {
+  font-weight: bold;
+  margin-bottom: 5px;
+}
+
+form label {
+  display: block;
+  margin: 10px 0 5px;
+}
+
+form input[type="number"] {
+  width: 100%;
+  padding: 8px;
+  font-size: 1rem;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  margin-bottom: 15px;
+}
+
+form input[type="radio"] {
+  margin-right: 5px;
+}
+
+form button {
+  display: inline-block;
+  padding: 10px 20px;
+  font-size: 1rem;
+  color: white;
+  background-color: #4caf50;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+  margin-right: 10px;
+}
+
+form button:hover {
+  background-color: #45a049;
+}
+
+form button[type="reset"] {
+  background-color: #f44336;
+}
+
+form button[type="reset"]:hover {
+  background-color: #e53935;
+}
+
+#result {
+  text-align: center;
+  margin-top: 20px;
+}
+
+#bmiOutput {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+#bmiValue {
+  font-size: 3rem;
+  color: #4caf50;
+  margin: 10px 0;
+}
+
+#bmiCategory {
+  font-size: 1.2rem;
+  font-weight: bold;
+}
+
+#bmiMessage {
+  font-size: 1rem;
+  color: #555;
+}
+
+#bmi-info table {
+  width: 100%;
+  border-collapse: collapse;
+  margin-top: 20px;
+}
+
+#bmi-info th,
+#bmi-info td {
+  text-align: center;
+  padding: 10px;
+  border: 1px solid #ddd;
+}
+
+#bmi-info th {
+  background-color: #4caf50;
+  color: white;
+}
+
+#bmi-info tr:nth-child(even) {
+  background-color: #f2f2f2;
+}
+
+#bmi-info tr:hover {
+  background-color: #ddd;
+}
+
+footer {
+  text-align: center;
+  padding: 10px;
+  background-color: #333;
+  color: white;
+  margin-top: 20px;
+}
+
+footer p {
+  font-size: 0.9rem;
+}
+
+  </style>
 </head>
-
 <body>
-    <!--Judul website -->
-    <header>
-        <h1>Kalkulator BMI</h1>
-    </header>
+  <header>
+    <h1>Kalkulator BMI</h1>
+    <p>Hitung BMI Anda untuk mengetahui status berat badan Anda. Masukkan data Anda di bawah ini.</p>
+  </header>
 
-   <!-- Konten Website --> 
-    <main></main>
+  <main>
+    <!-- Frame Background -->
+    <div class="frame">
+      <!-- Form Input BMI -->
+      <section id="bmi-calculator">
+        <form id="bmiForm">
+          <fieldset>
+            <legend>Jenis Kelamin</legend>
+            <label>
+              <input type="radio" name="gender" value="Pria" checked> Pria
+            </label>
+            <label>
+              <input type="radio" name="gender" value="Wanita"> Wanita
+            </label>
+          </fieldset>
 
-    <!-- Footer Website -->
-     <footer>
-        <p>Made by Aisyah@2024</p>
-     </footer>
+          <label for="weight">Berat Badan (kg)</label>
+          <input type="number" id="weight" name="weight" required placeholder="Masukkan berat badan">
+
+          <label for="age">Usia (tahun)</label>
+          <input type="number" id="age" name="age" required placeholder="Masukkan usia">
+
+          <label for="height">Tinggi Badan (cm)</label>
+          <input type="number" id="height" name="height" required placeholder="Masukkan tinggi badan">
+
+          <button type="button" id="calculateBtn">Hitung BMI</button>
+          <button type="reset">Reset</button>
+        </form>
+
+        <!-- Hasil BMI -->
+        <section id="result">
+          <h2>Hasil BMI</h2>
+          <div id="bmiOutput" style="display: none;">
+            <p id="bmiCategory">Status Berat Badan</p>
+            <h1 id="bmiValue">0.0</h1>
+            <p id="bmiMessage">Masukkan data untuk menghitung BMI Anda.</p>
+          </div>
+        </section>
+      </section>
+    </div>
+
+    <!-- Tabel Interpretasi BMI -->
+    <section id="bmi-info">
+      <h2>Interpretasi BMI</h2>
+      <table>
+        <thead>
+          <tr>
+            <th>BMI</th>
+            <th>Status Berat Badan</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td>18.5</td>
+            <td>Kekurangan berat badan</td>
+          </tr>
+          <tr>
+            <td>18.5 - 24.9</td>
+            <td>Normal (ideal)</td>
+          </tr>
+          <tr>
+            <td>25.0 - 29.9</td>
+            <td>Kelebihan berat badan</td>
+          </tr>
+          <tr>
+            <td>30.0 atau lebih</td>
+            <td>Kegemukan (Obesitas)</td>
+          </tr>
+        </tbody>
+      </table>
+    </section>
+  </main>
+
+  <footer>
+    <p>Archiv by @siti</p>
+  </footer>
+
+  <script src="js/script.js"></script>
 </body>
-
 </html>

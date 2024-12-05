@@ -1,1 +1,165 @@
-/* ini file CSS */
+/* Reset CSS */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  font-family: Arial, sans-serif;
+  line-height: 1.6;
+  background-color: #f9f9f9;
+  color: #333;
+  margin: 0;
+  padding: 0;
+}
+
+header {
+  text-align: center;
+  padding: 20px;
+  background-color: #4caf50;
+  color: white;
+}
+
+header h1 {
+  font-size: 2rem;
+  margin-bottom: 10px;
+}
+
+header p {
+  font-size: 1rem;
+}
+
+main {
+  max-width: 800px;
+  margin: 20px auto;
+  padding: 20px;
+}
+
+.frame {
+  background-color: #fff;
+  padding: 20px;
+  border-radius: 8px;
+  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+}
+
+form {
+  margin-bottom: 20px;
+}
+
+form fieldset {
+  border: none;
+  margin-bottom: 10px;
+}
+
+form legend {
+  font-weight: bold;
+  margin-bottom: 5px;
+}
+
+form label {
+  display: block;
+  margin: 10px 0 5px;
+}
+
+form input[type="number"] {
+  width: 100%;
+  padding: 8px;
+  font-size: 1rem;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  margin-bottom: 15px;
+}
+
+form input[type="radio"] {
+  margin-right: 5px;
+}
+
+form button {
+  display: inline-block;
+  padding: 10px 20px;
+  font-size: 1rem;
+  color: white;
+  background-color: #4caf50;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+  margin-right: 10px;
+}
+
+form button:hover {
+  background-color: #45a049;
+}
+
+form button[type="reset"] {
+  background-color: #f44336;
+}
+
+form button[type="reset"]:hover {
+  background-color: #e53935;
+}
+
+#result {
+  text-align: center;
+  margin-top: 20px;
+}
+
+#bmiOutput {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+#bmiValue {
+  font-size: 3rem;
+  color: #4caf50;
+  margin: 10px 0;
+}
+
+#bmiCategory {
+  font-size: 1.2rem;
+  font-weight: bold;
+}
+
+#bmiMessage {
+  font-size: 1rem;
+  color: #555;
+}
+
+#bmi-info table {
+  width: 100%;
+  border-collapse: collapse;
+  margin-top: 20px;
+}
+
+#bmi-info th,
+#bmi-info td {
+  text-align: center;
+  padding: 10px;
+  border: 1px solid #ddd;
+}
+
+#bmi-info th {
+  background-color: #4caf50;
+  color: white;
+}
+
+#bmi-info tr:nth-child(even) {
+  background-color: #f2f2f2;
+}
+
+#bmi-info tr:hover {
+  background-color: #ddd;
+}
+
+footer {
+  text-align: center;
+  padding: 10px;
+  background-color: #333;
+  color: white;
+  margin-top: 20px;
+}
+
+footer p {
+  font-size: 0.9rem;
+}
